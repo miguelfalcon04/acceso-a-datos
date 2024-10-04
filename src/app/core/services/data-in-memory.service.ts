@@ -9,8 +9,6 @@ export abstract class generic<T>{
     public abstract method1<T>():void;
 }
 export class DataInMemoryService<T extends Model> extends DataService<T>{
-    
-    
 
     private generarCodigoAlfanumerico(): string {
         const caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -35,12 +33,16 @@ export class DataInMemoryService<T extends Model> extends DataService<T>{
             observer.next(value);
             observer.complete();
         });
-        
-        
     }
+
     public override requestAll(): Observable<T[]> {
-        throw new Error('Method not implemented.');
+      return new Observable((observer)=>{
+        const _records = this._records.value;
+        observer.next(_records);
+        observer.complete();
+    });
     }
+
     public override requestById(id: string): Observable<T | null> {
         throw new Error('Method not implemented.');
     }
@@ -50,8 +52,8 @@ export class DataInMemoryService<T extends Model> extends DataService<T>{
     public override delete(id: string): Observable<T | null> {
         throw new Error('Method not implemented.');
     }
-    
 
-   
+
+
 
 }
