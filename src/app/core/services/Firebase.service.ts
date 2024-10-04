@@ -27,6 +27,4 @@ export class FirebaseDataService<T> extends DataService<Model>{
         throw new Error('Method not implemented.');
     }
 
-   
-
 }

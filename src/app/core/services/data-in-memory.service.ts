@@ -44,16 +44,18 @@ export class DataInMemoryService<T extends Model> extends DataService<T>{
     }
 
     public override requestById(id: string): Observable<T | null> {
-        throw new Error('Method not implemented.');
+        return new Observable((observer)=>{
+          const _records = this._records.value;
+          _records.findIndex(id => id.id === id);
+          observer.next(_records.findIndex(id => id.id === id))
+        })
     }
+
     public override update(id: string, value: T): Observable<T | null> {
         throw new Error('Method not implemented.');
     }
     public override delete(id: string): Observable<T | null> {
         throw new Error('Method not implemented.');
     }
-
-
-
 
 }
