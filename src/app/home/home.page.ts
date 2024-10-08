@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { PeopleService } from '../core/services/people.service';
+import { PreferencesService } from '../core/services/preferences.service';
+import { Preferences } from '@capacitor/preferences';
 
 @Component({
   selector: 'app-home',
@@ -8,9 +10,7 @@ import { PeopleService } from '../core/services/people.service';
 })
 export class HomePage {
 
-  constructor(
-    public peopleSvc:PeopleService
-  ) {
+    constructor( public peopleSvc:PeopleService) {
 
   }
 
